@@ -1,3 +1,9 @@
-telethon>=1.28.5
-python-telegram-bot>=20.7
-qrcode
+telethon==1.34.0
+telegram==0.0.1
+qrcode==7.4.2
+pyinstaller==6.4.0
+asyncio==3.4.3
+pillow==10.2.0  # Required for qrcode
+colorama==0.4.6  # For colored terminal output
+typing==3.7.4.3
+python-dateutil==2.8.2

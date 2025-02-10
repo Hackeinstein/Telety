@@ -1,3 +1,4 @@
+
 import os
 import asyncio
 from datetime import datetime
@@ -6,7 +7,8 @@ from telethon.tl.functions.channels import InviteToChannelRequest
 from telethon.tl.types import InputPeerUser
 from typing import List, Tuple
 from session_manager import SessionManager
-from session_manager import check_session
+from login import check_session, print_header, clear_screen
+from config import API_ID, API_HASH
 
 # Constants
 DELAY = 60  # seconds between adds
@@ -168,6 +170,7 @@ async def main_add() -> None:
             return
             
         print("✅ Successfully connected to Telegram!")
+        
 
         user_file = await get_user_file()
         target_group = await get_target_group()
@@ -194,6 +197,8 @@ def start_add() -> None:
         input("\n🔄 Press Enter to return to main menu...")
         return
     try:
+        clear_screen()
+        print_header()
         asyncio.run(main_add())
     except KeyboardInterrupt:
         print("\n\n👋 Adding process cancelled by user")

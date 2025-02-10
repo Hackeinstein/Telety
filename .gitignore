@@ -1,1 +1,2 @@
-source/config.py
+source/config.json
+*.session

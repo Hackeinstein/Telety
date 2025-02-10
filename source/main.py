@@ -1,9 +1,19 @@
+import sys
+import os
+
+
+# Create logs directory
+os.makedirs('logs', exist_ok=True)
+
+# Original content below
 import os
 import sys
 import asyncio
 from datetime import datetime
 from typing import NoReturn
 from login import check_session, start_login
+
+
 
 def log_error(error: Exception) -> None:
     """Log errors to errors.txt"""
@@ -131,4 +141,15 @@ def main_menu():
             input(f"\n❌ An error occurred: {str(e)}\nPress Enter to continue...")
 
 if __name__ == "__main__":
-    main_menu()
+    try:
+        main_menu()
+    except Exception as e:
+        log_error(e)
+        print(f"\n❌ Fatal error: {str(e)}")
+        input("\nPress Enter to exit...")
+    finally:
+        # Clean up streams if we created them
+        if hasattr(sys, 'frozen'):
+            sys.stdin.close()
+            sys.stdout.close()
+            sys.stderr.close()

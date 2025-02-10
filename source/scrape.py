@@ -1,3 +1,4 @@
+
 from session_manager import SessionManager
 import os
 import sys
@@ -10,7 +11,7 @@ from telethon.tl.types import InputPeerEmpty, Channel, Chat
 from telethon.tl.functions.messages import GetFullChatRequest
 import asyncio
 from typing import Tuple, List
-from login import check_session
+from login import check_session, print_header, clear_screen
 
 # Constants
 BATCH_SIZE = 200
@@ -219,6 +220,8 @@ def start_scrape() -> None:
         input("\n🔄 Press Enter to return to main menu...")
         return
     try:
+        clear_screen()
+        print_header()
         asyncio.run(main_scrape())
     except KeyboardInterrupt:
         print("\n\n👋 Scraping cancelled by user")
